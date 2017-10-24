@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  resources :user do
+  resources :user, except: [:index] do
     resources :ideas
   end
 
   namespace :admin do
     resources :categories
     resources :images
-    resources :ideas
+    resources :ideas,  only: [:index, :show]
+    resources :users, only: [:index, :show]
   end
 
   get "/login", to: "sessions#new"
