@@ -9,6 +9,40 @@
   </head>
 
   <body>
+    <main>
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: name %>
+    <% end %>
+    <% @user = User.find_by(id: session[:user_id]) %>
+    <ul>
+      <% if @user.nil? %>
+      <li><%= link_to "log in", login_path %></li>
+      <% elsif session[:user_id] != nil %>
+      <li><%= link_to "your page", user_path(session[:user_id]) %></li>
+      <li><%= link_to "your ideas", user_ideas_path(session[:user_id]) %></li>
+      <% if @user.admin? %>
+      <li><%= link_to "admin dashboard", dashboard_path %></li>
+      <% end %>
+      <li><%= link_to "logout", logout_path %></li>
+      <% end %>
+    </ul>
+    <nav>
+      <div>
+        <ul>
+          <li>Navigation</li>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
+  </main>
+  <nav>
+    <div>
+      <ul>
+        <% if session[:user_id] %>
+        <li><%= link_to "logout", logout_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
   </body>
 </html>
