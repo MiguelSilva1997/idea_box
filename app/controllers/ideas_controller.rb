@@ -19,9 +19,42 @@ class IdeasController < ApplicationController
     @images = Images.all
   end
 
+  def create
+    @idea = @user.ideas.new(idea_params)
+    if @idea.save
+      flash[:message] = "#{@idea.title} was created successfully!"
+      redirect_to user_idea_path(@idea.user, @idea)
+    else
+      flash[:message] = "Unable to create idea. Something went wrong"
+      redirect_to new_user_idea_path(current_user)
+    end
+  end
+
   def edit
     @images = Image.all
     @idea = Idea.find(params[:id])
+  end
+
+  def update
+    @idea = Idea.find(params[:id])
+    if @idea.update(idea_params)
+      flash[:message] = "#{@idea.title} successfully updated"
+      redirect_to user_idea_path(@idea.user, @idea)
+    else
+      flash[:message] = "#{@idea.title} was not updated. Maybe a field was left blank?"
+      redirect_to user_idea_path(@idea.user, @idea)
+    end
+  end
+
+  def destroy
+    @idea = Idea.find(params[:id])
+    if @idea.destroy
+      flash[:message] = "#{@idea.title} was deleted"
+      redirect_to user_ideas_path(@idea.user)
+    else
+      flash[:message] = "#{@idea.title} was not deleted. Please try again."
+      redirect_to request.referrer
+    end
   end
 
   private
