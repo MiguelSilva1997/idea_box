@@ -1,15 +1,59 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+html{
+  background: darkslategray;
+}
+
+main{
+  text-align: center;
+}
+
+.navigation{
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+    background-color: aliceblue;
+    font-size: 25px;
+    background-color: #262626;
+}
+
+h1{
+  color: #b2cecd;
+    text-align: -webkit-center;
+    font-size: 50px;
+}
+
+ul {
+  padding: 0;
+  text-align: center;
+  list-style-type: none;
+}
+
+a {
+  color: #DDDDDD;
+  text-decoration: none;
+}
+
+.user-edit-container {
+  margin-top: 29vh;
+  display: flex;
+  justify-content: space-around;
+  background-color: #3A3A3A;
+  padding: 10px;
+}
+
+.card{
+  padding:12px;
+  background: white;
+  width: 300px;
+  display: inline-block;
+  margin-bottom: 82px;
+}
+
+.new-idea{
+  padding-top: 12px;
+}
+
+.logout{
+  margin-left: 90%;
+}

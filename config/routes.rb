@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :user, except: [:index] do
+  resources :users, except: [:index] do
     resources :ideas
   end
 
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
+  get "/logout", to: "sessions#destroy"
   get "/dashboard", to: "admin/base#dashboard"
   get "/", to: "base#index"
 end

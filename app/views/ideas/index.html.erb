@@ -1,0 +1,15 @@
+<h1><%= @user.username %>'s ideas</h1>
+<% if @user.ideas.empty? %>
+  <h2>You have no ideas!</h2>
+<% else %>
+  <% @user.ideas.each do |idea| %>
+  <% unless idea.images.empty? %>
+  <p><%= image_tag idea.images.first.url %><p>
+  <% end %>
+    <p><%= idea.title %></p>
+    <p><%= idea.content %></p>
+    <%= link_to "edit idea", edit_user_idea_path(@user, idea) %>
+    <%= link_to "delete idea", user_idea_path(@user, idea), method: 'delete' %>
+  <% end %>
+<% end %>
+<%= link_to "Create A New Idea", new_user_idea_path(@user) %>

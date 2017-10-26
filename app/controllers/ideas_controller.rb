@@ -16,7 +16,7 @@ class IdeasController < ApplicationController
   def new
     @idea = Idea.new
     @categories = Category.all
-    @images = Images.all
+    @images = Image.all
   end
 
   def create
