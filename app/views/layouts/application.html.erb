@@ -18,10 +18,13 @@
       <% if @user.nil? %>
       <li><%= link_to "log in", login_path %></li>
       <% elsif session[:user_id] != nil %>
+      <% if @user.admin? %>
+      <li><%= link_to "profile", admin_user_path(session[:user_id]) %></li>
+      <li><%= link_to "ideas", admin_ideas_path(session[:user_id]) %></li>
+      <li><%= link_to "admin dashboard", dashboard_path %></li>
+      <% else %>
       <li><%= link_to "profile", user_path(session[:user_id]) %></li>
       <li><%= link_to "ideas", user_ideas_path(session[:user_id]) %></li>
-      <% if @user.admin? %>
-      <li><%= link_to "admin dashboard", dashboard_path %></li>
       <% end %>
       <% end %>
     </ul>

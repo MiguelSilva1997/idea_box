@@ -4,7 +4,7 @@
 <% else %>
   <% @user.ideas.each do |idea| %>
   <% unless idea.images.empty? %>
-  <p><%= image_tag idea.images.first.url %><p>
+  <p><%= image_tag idea.images.first.image %><p>
   <% end %>
     <p><%= idea.title %></p>
     <p><%= idea.content %></p>

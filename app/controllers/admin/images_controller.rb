@@ -14,6 +14,7 @@ class Admin::ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     if @image.save
+      # byebug
       redirect_to admin_image_path(@image)
     else
       render :new

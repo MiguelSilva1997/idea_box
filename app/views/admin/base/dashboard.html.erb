@@ -1,0 +1,13 @@
+<h1>Admin Dashboard</h1>
+    <h4>All Users</h4>
+    <% @users.each do |user| %>
+    <%= link_to user.username, admin_user_path(user) %><br>
+    <% end %>
+    <h4>All Ideas</h4>
+    <% @ideas.each do |idea| %>
+      <%= link_to idea.title, admin_idea_path(idea) %><br>
+      <% end %>
+    <h4>All Categories</h4>
+    <% @categories.each do |category| %>
+    <%= link_to category.title, admin_category_path(category) %><br>
+    <% end %>

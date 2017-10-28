@@ -12,15 +12,15 @@
     <% if idea.images.empty? %>
     <p>there are no images for this idea</p>
     <% else %>
-    <a><%= image_tag idea.images.first.url %></a>
+    <a><%= image_tag idea.images.first.image %></a>
     <% end %>
     <div>
       <p>Idea title:</p>
-      <span><%= link_to idea.title, user_idea_path(@user, idea) %></span>
-    </div>
+      <h2><span><%= link_to idea.title, admin_idea_path(idea) %></span></h2>
+    </div><br><br>
     <div>
       <span><%= idea.title %></span>
-      <p><%= idea.body %></p>
+      <p><%= idea.content %></p>
     </div>
     <% end %>
     <% end %>

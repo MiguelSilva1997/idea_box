@@ -1,0 +1,7 @@
+<h1>All Images</h1>
+<% @images.each do |image| %>
+  <%= image_tag image.image %>
+  <p><%= image.name %></p>
+  <%= link_to "edit image", edit_admin_image_path(image) %>
+  <%= link_to "delete image", admin_image_path(image), method: 'delete' %>
+<% end %>

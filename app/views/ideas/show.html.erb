@@ -1,0 +1,15 @@
+<h1>This Idea</h1>
+<h4>Owner: <%= @idea.user.username %></h4>
+<h4>Title: <%= @idea.title %></h4>
+<p>content: <%= @idea.content %></p>
+<% if @idea.images.empty? %>
+<p>There are no images for this idea!</p>
+<% else %>
+<% @idea.images.each do |image| %>
+<%= image_tag image.image %>
+<% end %>
+<% end %>
+<p>Category:</p>
+<p><%= @idea.category.title %></p>
+<%= link_to "delete idea", user_idea_path(@idea), method: 'delete' %>
+<%= link_to "edit idea", edit_user_idea_path(@idea) %>

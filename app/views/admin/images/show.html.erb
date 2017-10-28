@@ -1,0 +1,4 @@
+<%= @image.name %><br>
+<%= image_tag @image.image%><br>
+<%= link_to "edit image", edit_admin_image_path(@image) %><br>
+<%= link_to "delete image", admin_image_path(@image), method: 'delete' %><br>

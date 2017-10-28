@@ -1,4 +1,4 @@
-<%= form_for([:user, @idea]) do |f| %>
+<%= form_for([@user, @idea]) do |f| %>
 
 <%= f.label :title %>
 <%= f.text_field :title %>
@@ -6,14 +6,14 @@
 <%= f.label :content %>
 <%= f.text_area :content %>
 
-<%= f.collection_select :category_id, @categories, :id, :name, prompt: true%>
+<%= f.collection_select :category_id, @categories, :id, :title, prompt: true%>
 <p>Check the box to add images:</p>
 <div>
   <%= hidden_field_tag 'idea[image_ids][]', nil %>
   <% @images.each do |image| %>
   <div>
     <%= check_box_tag('idea[image_ids][]', image.id, @idea.image_ids.include?(image.id), id: "image-#{image.id}") %>
-    <label for=<%= "image-#{image.id}" %>><%= image_tag image.url, width: 100 %></label>
+    <label for=<%= "image-#{image.id}" %>><%= image_tag image.image, width: 100 %></label>
   </div>
   <% end %>
 </div>

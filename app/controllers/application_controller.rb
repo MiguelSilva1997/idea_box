@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
+  def current_user?
+    render file: '/public/404' unless current_user
+  end
+
 end

@@ -7,7 +7,7 @@ class IdeasController < ApplicationController
   end
 
   def show
-    @ideas = @user.ideas.find(params[:id])
+    @idea = @user.ideas.find(params[:id])
     if @ideas.nil?
       redirect_to user_path(@user)
     end
@@ -48,6 +48,8 @@ class IdeasController < ApplicationController
 
   def destroy
     @idea = Idea.find(params[:id])
+    image_idea = ImageIdea.find_by(idea_id: params[:id])
+    image_idea.destroy
     if @idea.destroy
       flash[:message] = "#{@idea.title} was deleted"
       redirect_to user_ideas_path(@idea.user)
