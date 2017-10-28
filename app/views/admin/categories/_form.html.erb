@@ -1,7 +1,7 @@
-<%= form_for @category do |f| %>
+<%= form_for [:admin, @category] do |f| %>
 
-<%= f.label :name %>
-<%= f.text_field :name %>
+<%= f.label :title %>
+<%= f.text_field :title %>
 
 <%= f.submit %>
 <% end %>

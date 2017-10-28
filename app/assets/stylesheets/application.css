@@ -30,6 +30,7 @@ ul {
 }
 
 a {
+  font-size: 20px;
   color: #DDDDDD;
   text-decoration: none;
 }
@@ -56,4 +57,16 @@ a {
 
 .logout{
   margin-left: 90%;
+}
+
+h4 {
+  margin: 2px;
+  font-size: 25px;
+  color: #b2cecd;
+}
+
+.category-link {
+  font-size: 30px;
+  color: black;
+  margin: 8px;
 }

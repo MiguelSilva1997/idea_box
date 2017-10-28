@@ -3,6 +3,7 @@
 <% @user.ideas.each do |idea| %>
   <h3><%= link_to idea.title, admin_idea_path(idea) %></h3><br>
 <% end %>
+<%= link_to "Create Idea", new_user_idea_path(@user) %>
 <div class="user-edit-container">
   <%= link_to "Edit User", edit_user_path(@user) %>
 </div>

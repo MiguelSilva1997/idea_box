@@ -2,8 +2,8 @@
 <% @users.each do |user| %>
   <h4>All <%= user.username %>'s ideas:</h4><br>
   <% user.ideas.each do |idea| %>
-    idea title: <%= idea.title %>
-    <%= link_to "see this idea", admin_idea_path(idea) %>
+    <h2>idea title: <%= idea.title %></h2>
+    <%= link_to "see this idea", admin_idea_path(idea) %><br>
   <br>
   <% end %>
 <% end %>
