@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-
+private
   def current_user
     @user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
 
   def current_user?
     render file: '/public/404' unless current_user
+  end
+
+  def user_admin?
+    render file: '/public/404' unless current_admin?
   end
 
 end

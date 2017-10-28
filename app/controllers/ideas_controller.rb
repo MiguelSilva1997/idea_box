@@ -31,28 +31,32 @@ class IdeasController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     @images = Image.all
     @idea = Idea.find(params[:id])
   end
 
   def update
     @idea = Idea.find(params[:id])
-    if @idea.update(idea_params)
+    @idea.update(idea_params)
+    if @idea.save
       flash[:message] = "#{@idea.title} successfully updated"
-      redirect_to user_idea_path(@idea.user, @idea)
+      redirect_to user_idea_path(@idea.user, @idea) if @user.role != "admin"
+      redirect_to admin_idea_path(@idea) if @user.role == "admin"
     else
       flash[:message] = "#{@idea.title} was not updated. Maybe a field was left blank?"
-      redirect_to user_idea_path(@idea.user, @idea)
+      render :edit
     end
   end
 
   def destroy
     @idea = Idea.find(params[:id])
-    image_idea = ImageIdea.find_by(idea_id: params[:id])
-    image_idea.destroy
+    image_idea = ImageIdea.where(idea_id: params[:id])
+    image_idea.destroy_all
     if @idea.destroy
       flash[:message] = "#{@idea.title} was deleted"
-      redirect_to user_ideas_path(@idea.user)
+      redirect_to user_ideas_path(@idea.user) if @user.role != "admin"
+      redirect_to admin_ideas_path(@idea.user) if @user.role == "admin"
     else
       flash[:message] = "#{@idea.title} was not deleted. Please try again."
       redirect_to request.referrer

@@ -6,10 +6,10 @@
   <% unless idea.images.empty? %>
   <p><%= image_tag idea.images.first.image %><p>
   <% end %>
-    <p><%= idea.title %></p>
-    <p><%= idea.content %></p>
-    <%= link_to "edit idea", edit_user_idea_path(@user, idea) %>
-    <%= link_to "delete idea", user_idea_path(@user, idea), method: 'delete' %>
+    <h3><%= idea.title %></h3>
+    <h3><%= idea.content %></h3><br>
+    <h2><%= link_to "edit idea", edit_user_idea_path(@user, idea) %></h2><br>
+    <h2><%= link_to "delete idea", user_idea_path(@user, idea), method: 'delete' %></h2><br>
   <% end %>
 <% end %>
 <%= link_to "Create A New Idea", new_user_idea_path(@user) %>

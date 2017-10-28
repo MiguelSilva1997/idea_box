@@ -1,5 +1,8 @@
 <h1><%= @admin.username %>'s user viewer</h1>
-<%= @user.username %>
+<h2><%= @user.username %></h2>
 <% @user.ideas.each do |idea| %>
-  <%= link_to idea.title, admin_idea_path(idea) %>
+  <h3><%= link_to idea.title, admin_idea_path(idea) %></h3><br>
 <% end %>
+<div class="user-edit-container">
+  <%= link_to "Edit User", edit_user_path(@user) %>
+</div>

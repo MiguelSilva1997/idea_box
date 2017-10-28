@@ -32,6 +32,5 @@
   <% if @user.id == session[:user_id] || @user.admin %>
   <div class="user-edit-container">
     <%= link_to "Edit User", edit_user_path(@user) %>
-    <%= link_to "Delete User", user_path(@user), method: 'delete' %>
   </div>
   <% end %><br><br>

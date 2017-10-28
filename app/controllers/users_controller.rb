@@ -29,7 +29,8 @@ class UsersController < ApplicationController
     @user = User.find(session[:user_id])
     @user.update(user_params)
     if @user.save
-      redirect_to user_path(@path)
+      redirect_to user_path(@user) if @user.role != "admin"
+      redirect_to admin_user_path(@user) if @user.role == "admin"
     else
       render :edit
     end

@@ -3,5 +3,13 @@
 <h4>User with the ideas: <%= link_to @idea.user.username, admin_user_path(@idea.user) %><br></h4>
 <p>Idea title: <%= @idea.title %><br></p>
 <p>Idea body:<br> <%= @idea.content %></p>
+<% @idea.images.each do |image| %>
+  <%= image_tag image.image %>
+<% end %><br>
 <p>Categories: </p><br>
 <%= @idea.category.title %>
+
+<div class="user-edit-container">
+  <%= link_to "Edit Idea", edit_user_idea_path(@idea) %>
+  <%= link_to "Delete Idea", user_idea_path(@idea), method: 'delete' %>
+</div>
